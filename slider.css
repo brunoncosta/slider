@@ -1,0 +1,39 @@
+#slider{
+  position: relative;
+  width: 100%;
+}
+
+.slider-item{
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.slider-arrows{
+  position: absolute;
+  top: 45%;
+  width: 100%;
+}
+
+.slider-arrows > div{
+  cursor: pointer;
+  color: #FFF;
+}
+
+.slider-arrows > div:hover{
+  color: #000;
+}
+
+.slider-arrow-left{
+  float: left;
+  margin-left: 20px;
+}
+
+.slider-arrow-right{
+  float: right;
+  margin-right: 20px;
+}
