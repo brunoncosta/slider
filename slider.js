@@ -6,11 +6,12 @@ $( document ).ready(function() {
 	$sliderElements = $('> div', $slider),
 	totalElements   = $sliderElements.length,
 	current         = 0,
-	pause           = 5000,
-	fade            = 1000,
+	pause           = $slider.data('pause') ? $slider.data('pause') : 5000,
+	fade            = $slider.data('fade') ? $slider.data('fade') : 1000,
 	interval,
 	leftArrow       = $('.slider-arrow-left'),
-	rightArrow      = $('.slider-arrow-right');
+	rightArrow      = $('.slider-arrow-right'),
+	hoverStop       = $slider.data('hover-stop') ? $slider.data('hover-stop') : true;
 
 	leftArrow.html('<i class="fas fa-chevron-left fa-4x"></i>');
 	rightArrow.html('<i class="fas fa-chevron-right fa-4x"></i>');
@@ -53,7 +54,9 @@ $( document ).ready(function() {
 	}
 
 	//Hover Stop the Slider
-	$slider.hover(stopSlider, playSlider);
+	if( hoverStop == true ){
+		$slider.hover(stopSlider, playSlider);
+	}
 
 	resizeSlider();
 	playSlider();
