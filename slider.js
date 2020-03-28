@@ -1,15 +1,16 @@
 $( document ).ready(function() {
 
 	//Variables
-	var current = 0,
-		pause = 5000,
-		fade = 1000,
-		$slider = $('#slider'),
-		$sliderElements = $('> div', $slider),
-		totalElements = $sliderElements.length,
-		interval,
-		leftArrow = $('.slider-arrow-left'),
-		rightArrow = $('.slider-arrow-right');
+	var
+	$slider         = $('#slider'),
+	$sliderElements = $('> div', $slider),
+	totalElements   = $sliderElements.length,
+	current         = 0,
+	pause           = 5000,
+	fade            = 1000,
+	interval,
+	leftArrow       = $('.slider-arrow-left'),
+	rightArrow      = $('.slider-arrow-right');
 
 	leftArrow.html('<i class="fas fa-chevron-left fa-4x"></i>');
 	rightArrow.html('<i class="fas fa-chevron-right fa-4x"></i>');
@@ -21,6 +22,12 @@ $( document ).ready(function() {
 
 	//Hide all Elements and show the Current Element;
 	$sliderElements.hide().eq(current).show();
+
+	// Hide Arrows
+	if(totalElements == 1){
+		leftArrow.hide();
+		rightArrow.hide();
+	}
 
 	//Arrows Clicks
 	leftArrow.click(function(){
