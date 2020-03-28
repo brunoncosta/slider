@@ -11,7 +11,15 @@ $( document ).ready(function() {
 	interval,
 	leftArrow       = $('.slider-arrow-left'),
 	rightArrow      = $('.slider-arrow-right'),
-	hoverStop       = $slider.data('hover-stop') ? $slider.data('hover-stop') : true;
+	hoverStop       = $slider.data('hover-stop') ? $slider.data('hover-stop') : true,
+	filterBlur      = $slider.data('filter-blur') ? 'blur('+$slider.data('filter-blur')+'px)' : 'blur(0px)';
+
+	$sliderElements
+	  .css('filter',filterBlur)
+	  .css('webkitFilter',filterBlur)
+	  .css('mozFilter',filterBlur)
+	  .css('oFilter',filterBlur)
+	  .css('msFilter',filterBlur);
 
 	leftArrow.html('<i class="fas fa-chevron-left fa-4x"></i>');
 	rightArrow.html('<i class="fas fa-chevron-right fa-4x"></i>');
@@ -23,12 +31,6 @@ $( document ).ready(function() {
 
 	//Hide all Elements and show the Current Element;
 	$sliderElements.hide().eq(current).show();
-
-	// Hide Arrows
-	if(totalElements == 1){
-		leftArrow.hide();
-		rightArrow.hide();
-	}
 
 	//Arrows Clicks
 	leftArrow.click(function(){
@@ -59,7 +61,15 @@ $( document ).ready(function() {
 	}
 
 	resizeSlider();
-	playSlider();
+
+	if(totalElements == 0){
+		$slider.hide();
+	} else if(totalElements == 1){
+		leftArrow.hide();
+		rightArrow.hide();
+	} else {
+		playSlider();
+	}
 
 	$(window).resize(function() {
 		resizeSlider();

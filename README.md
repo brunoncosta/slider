@@ -10,4 +10,5 @@
 
 data-fade      : Int,
 data-pause     : Int,
-data-hover-stop: boolean
+data-hover-stop: boolean,
+filter-blur    : Int
